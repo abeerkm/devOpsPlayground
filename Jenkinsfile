@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Build Simple WebServer') {
+        stage('Build Simple WebServer-test') {
             when { anyOf { branch "master"; branch "dev" }}
             steps {
                 echo 'Building..'
