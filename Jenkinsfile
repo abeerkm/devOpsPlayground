@@ -11,7 +11,6 @@ pipeline {
                 # docker build
                 '''
             }
-
         }
         stage('Test') {
             steps {
@@ -21,8 +20,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-
-
             }
         }
     }
