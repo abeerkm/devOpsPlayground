@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+     agent { label 'ec2-fleet' }
 
     stages {
         stage('Build Simple WebServer-test') {
@@ -11,6 +11,7 @@ pipeline {
                 # docker build
                 '''
             }
+
         }
         stage('Test') {
             steps {
