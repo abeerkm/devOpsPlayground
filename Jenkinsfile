@@ -7,6 +7,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 sh '''
+                ec2 metadata
                 cd simple_webserver
                 # docker build
                 '''
