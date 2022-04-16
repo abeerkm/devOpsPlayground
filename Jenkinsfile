@@ -13,6 +13,7 @@ pipeline {
                 # docker build
                 '''
             }
+
         }
         stage('Test') {
             steps {
