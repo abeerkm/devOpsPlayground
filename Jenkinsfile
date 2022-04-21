@@ -4,20 +4,12 @@ pipeline {
   environment {
     REGISTRY_URL = 'public.ecr.aws/r7m7o9d4/aws18'
     ECR_REGION = 'Paris'
-    K8S_NAMESPACE = 'abeerNameSpace'
+    K8S_NAMESPACE = 'abeer-NameSpace'
     K8S_CLUSTER_NAME = 'devops-alfnar-k8s'
     K8S_CLUSTER_REGION = 'eu-north-1'
   }
 
-    stage('Create namespace'){
-      when { branch "master" }
-      steps {
-          sh '''
-          kubectl create namespace abeerNamespace
-          '''
-          }
 
-           }
     stage('MNIST Web Server - build'){
       when { branch "master" }
       steps {
