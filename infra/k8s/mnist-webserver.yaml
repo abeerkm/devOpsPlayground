@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mnist-webserver
+  namespace: {{K8S_NAMESPACE}}
+  labels:
+    app: mnist-webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mnist-webserver
+  template:
+    metadata:
+      labels:
+        app: mnist-webserver
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: mnist-webserver
+          image: {{REGISTRY_URL}}/{{IMG_NAME}}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mnist-webserver-service
+spec:
+  selector:
+    app: mnist-webserver
+  ports:
+    - port: 8080
+      targetPort: 8080
