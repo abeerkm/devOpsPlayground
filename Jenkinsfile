@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    REGISTRY_URL = '352708296901.dkr.ecr.eu-west-3.amazonaws.com/abeer'
+    REGISTRY_URL = '352708296901.dkr.ecr.eu-west-3.amazonaws.com'
     ECR_REGION = 'Paris'
     K8S_NAMESPACE = 'abeer-namespace'
     K8S_CLUSTER_NAME = 'devops-alfnar-k8s'
@@ -14,7 +14,7 @@ pipeline {
       when { branch "master" }
       steps {
           sh '''
-            IMAGE="mnist-webserver:0.0.${BUILD_NUMBER}"
+            IMAGE="abeer:0.0.${BUILD_NUMBER}"
             cd webserver
             aws ecr get-login-password --region $ECR_REGION | docker login --username AWS --password-stdin ${REGISTRY_URL}
             docker build -t ${IMAGE} .
