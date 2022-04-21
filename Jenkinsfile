@@ -9,7 +9,7 @@ pipeline {
     K8S_CLUSTER_REGION = 'eu-north-1'
   }
 
-    stage('MNIST Web Server - build'){
+    stage('Create namespace'){
       when { branch "master" }
       steps {
           sh '''
