@@ -4,7 +4,7 @@ pipeline {
   environment {
     REGISTRY_URL = 'public.ecr.aws/r7m7o9d4/aws18'
     ECR_REGION = 'Paris'
-    K8S_NAMESPACE = 'abeerNamespace'
+    K8S_NAMESPACE = 'abeerNameSpace'
     K8S_CLUSTER_NAME = 'devops-alfnar-k8s'
     K8S_CLUSTER_REGION = 'eu-north-1'
   }
