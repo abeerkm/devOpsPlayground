@@ -4,7 +4,7 @@ pipeline {
   environment {
     REGISTRY_URL = 'public.ecr.aws/r7m7o9d4/aws18'
     ECR_REGION = 'Paris'
-    K8S_NAMESPACE = 'abeer-NameSpace'
+    K8S_NAMESPACE = 'abeer-namespace'
     K8S_CLUSTER_NAME = 'devops-alfnar-k8s'
     K8S_CLUSTER_REGION = 'eu-north-1'
   }
@@ -14,12 +14,7 @@ pipeline {
       when { branch "master" }
       steps {
           sh '''
-            IMAGE="mnist-webserver:0.0.${BUILD_NUMBER}"
-            cd webserver
-            aws ecr get-login-password --region $ECR_REGION | docker login --username AWS --password-stdin ${REGISTRY_URL}
-            docker build -t ${IMAGE} .
-            docker tag ${IMAGE} ${REGISTRY_URL}/${IMAGE}
-            docker push ${REGISTRY_URL}/${IMAGE}
+
             '''
       }
     }
@@ -28,20 +23,7 @@ pipeline {
         when { branch "master" }
         steps {
             sh '''
-            cd infra/k8s
-            IMG_NAME=mnist-webserver:0.0.${BUILD_NUMBER}
-
-            # replace registry url and image name placeholders in yaml
-            sed -i "s/{{REGISTRY_URL}}/$REGISTRY_URL/g" mnist-webserver.yaml
-            sed -i "s/{{K8S_NAMESPACE}}/$K8S_NAMESPACE/g" mnist-webserver.yaml
-            sed -i "s/{{IMG_NAME}}/$IMG_NAME/g" mnist-webserver.yaml
-
-            # get kubeconfig creds
-            aws eks --region $K8S_CLUSTER_REGION update-kubeconfig --name $K8S_CLUSTER_NAME
-
-            # apply to your namespace
-            kubectl apply -f mnist-webserver.yaml -n $K8S_NAMESPACE
-            '''
+               '''
         }
     }
 
