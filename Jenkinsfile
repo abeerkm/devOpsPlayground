@@ -16,6 +16,7 @@ pipeline {
           kubectl create namespace abeerNamespace
           '''
           }
+
            }
     stage('MNIST Web Server - build'){
       when { branch "master" }
