@@ -60,6 +60,7 @@ pipeline {
         }
     }
 
+
     stage('MNIST Predictor - deploy'){
         when { branch "master" }
         steps {
