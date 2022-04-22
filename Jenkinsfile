@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    REGISTRY_URL = '352708296901.dkr.ecr.eu-west-3.amazonaws.com/abeer'
+    REGISTRY_URL = '352708296901.dkr.ecr.eu-west-3.amazonaws.com'
     ECR_REGION = 'eu-west-3 '
     K8S_NAMESPACE = 'abeer-namespace'
     K8S_CLUSTER_NAME = 'devops-alfnar-k8s'
