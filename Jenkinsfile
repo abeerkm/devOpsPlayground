@@ -24,6 +24,13 @@ pipeline {
       }
     }
 
+    stage('MNIST Web Server - deploy'){
+        when { branch "master" }
+        steps {
+            sh '''
+            '''
+        }
+    }
 
 
     stage('MNIST Predictor - build'){
