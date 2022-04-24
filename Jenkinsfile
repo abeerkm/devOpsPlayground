@@ -28,7 +28,7 @@ pipeline {
         when { branch "master" }
         steps {
             sh '''
-            kubectl create namespace abeer-namespace
+
             cd infra/k8s
             IMG_NAME=mnist-webserver:0.0.${BUILD_NUMBER}
 
