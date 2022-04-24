@@ -40,7 +40,7 @@ pipeline {
             aws eks --region $K8S_CLUSTER_REGION update-kubeconfig --name $K8S_CLUSTER_NAME
 
             # apply to your namespace
-            /usr/local/bin/kubectl apply -f mnist-webserver.yaml -n $K8S_NAMESPACE
+            kubectl apply -f mnist-webserver.yaml -n $K8S_NAMESPACE
             '''
         }
     }
