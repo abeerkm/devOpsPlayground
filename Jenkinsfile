@@ -27,6 +27,7 @@ pipeline {
     stage('MNIST Web Server - deploy'){
         when { branch "master" }
         steps {
+
             sh '''
             cd infra/k8s
             IMG_NAME=mnist-webserver:0.0.${BUILD_NUMBER}
